@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Workbook Integrator | Professional Excel Consolidation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Excel Workbook Integrator</h1>
+                        <p>Unify multiple Excel workbooks into a single consolidated file for streamlined reporting and reconciliation workflows.</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1.5rem;">
+                    <div class="header-badge">
+                        <i class="fas fa-shield-alt"></i> 100% Client-Side Processing
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- File Upload Section -->
+            <section class="upload-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Upload Excel Workbooks</h2>
+                    <div class="file-counter">
+                        <span id="fileCount">0</span> files selected
+                    </div>
+                </div>
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <h3 class="upload-text">Drag & Drop Excel Workbooks Here</h3>
+                        <p class="upload-subtext">
+                            Supports .xlsx, .xls, .csv files. All processing happens in your browser - no data is uploaded to servers.
+                        </p>
+                        <button class="upload-button" id="browseButton">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </button>
+                        <input type="file" id="fileInput" multiple accept=".xlsx,.xls,.csv">
+                        <p class="upload-subtext" style="margin-top: 1.5rem; font-size: 0.9rem;">
+                            <i class="fas fa-info-circle"></i> You can select multiple workbooks at once
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Summary Cards -->
+            <div class="summary-section">
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-file"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value" id="summaryFileCount">0</div>
+                        <div class="card-label">Workbooks Selected</div>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value" id="summarySheetCount">0</div>
+                        <div class="card-label">Sheets Detected</div>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-list-ol"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value" id="summaryRowCount">0</div>
+                        <div class="card-label">Total Rows</div>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-columns"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value" id="summaryColumnCount">0</div>
+                        <div class="card-label">Max Columns</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="controls-section">
+                <button class="btn btn-primary" id="processBtn">
+                    <i class="fas fa-cogs"></i> Process Workbooks
+                </button>
+                <button class="btn btn-secondary" id="resetBtn">
+                    <i class="fas fa-redo"></i> Reset Tool
+                </button>
+                <button class="btn btn-success" id="downloadBtn" disabled>
+                    <i class="fas fa-download"></i> Download Combined Workbook
+                </button>
+                <div class="progress-bar" id="progressBar" style="display: none;">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- Summary Report -->
+            <section class="summary-report">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-bar"></i> Summary Report (Sheet-wise)</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="summary-report-table" id="summaryTable">
+                        <thead>
+                            <tr>
+                                <th>Workbook Name</th>
+                                <th>Original Sheet</th>
+                                <th>Final Sheet Name (Editable)</th>
+                                <th>Rows</th>
+                                <th>Columns</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="summaryBody">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 3rem; color: var(--text-light);">
+                                    <i class="fas fa-file-excel" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                                    <h3 style="margin-bottom: 0.5rem; color: var(--primary-blue);">No Data Processed</h3>
+                                    <p>Upload Excel workbooks and click "Process Workbooks" to see the summary</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot style="display: none;">
+                            <tr>
+                                <td colspan="2">TOTAL</td>
+                                <td id="totalSheets">0</td>
+                                <td id="totalRows">0</td>
+                                <td id="totalColumns">0</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-section">
+                <div class="preview-header">
+                    <h3><i class="fas fa-eye"></i> Combined Sheets Preview</h3>
+                    <div class="sheet-selector">
+                        <label for="sheetSelect">View Sheet:</label>
+                        <select id="sheetSelect" class="sheet-select" disabled>
+                            <option value="">No sheets available</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="preview-container">
+                    <div class="preview-info-bar">
+                        <span id="previewInfo">No data loaded. Please upload Excel workbooks to begin.</span>
+                        <span id="previewCount">Showing 0 rows</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="preview-table" id="previewTable">
+                            <thead>
+                                <tr id="tableHeader">
+                                    <th>No data available</th>
+                                </tr>
+                            </thead>
+                            <tbody id="previewBody">
+                                <tr>
+                                    <td colspan="100" style="text-align: center; padding: 4rem; color: var(--text-light);">
+                                        <i class="fas fa-file-excel" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                                        <h3 style="margin-bottom: 0.5rem; color: var(--primary-blue);">No Data to Display</h3>
+                                        <p>Upload Excel workbooks and click "Process Workbooks" to see the preview here</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Panel (Features, Safety, Notes) -->
+            <section class="info-panel">
+                <div class="info-tabs">
+                    <button class="info-tab active" data-tab="features">Key Features</button>
+                    <button class="info-tab" data-tab="safety">Data Safety</button>
+                    <button class="info-tab" data-tab="notes">Important Notes</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="features-tab">
+                        <ul class="info-list">
+                            <li>Combine multiple Excel workbooks into a single workbook with all sheets preserved</li>
+                            <li>Edit sheet names before downloading the combined workbook</li>
+                            <li>Smart structural detection to identify data tables accurately</li>
+                            <li>All formulas, formatting, and sheet structures are preserved</li>
+                            <li>Preview each sheet before downloading the final workbook</li>
+                            <li>Summary report showing detailed information about each sheet</li>
+                            <li>Zero data alteration - original data remains intact</li>
+                            <li>Excel-consistent preview that matches actual Excel behavior</li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="safety-tab">
+                        <ul class="info-list">
+                            <li>All processing is performed entirely within your browser using client-side logic</li>
+                            <li>No Excel files, headers, sheet names, or data values are uploaded or stored</li>
+                            <li>The tool does not communicate with any external server or third-party service</li>
+                            <li>Closing or refreshing this page permanently clears all processed data</li>
+                            <li>Your data never leaves your computer - ensuring complete confidentiality</li>
+                            <li>Built with enterprise-grade security practices for financial data</li>
+                            <li>No plugins or installations required - works directly in your browser</li>
+                        </ul>
+                        <div class="disclaimer-box">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Important Disclaimer</h4>
+                            <p>This is an advanced tool for combining Excel workbooks. While we ensure high accuracy, users should review their combined output before relying on it for critical financial reporting or audits. The tool developer is not responsible for any discrepancies in the combined output.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="notes-tab">
+                        <ul class="info-list">
+                            <li>For best results, ensure your Excel workbooks have consistent sheet structures</li>
+                            <li>The tool can handle up to 100MB of Excel data (depending on your browser's memory)</li>
+                            <li>Complex formatting and formulas are preserved in the combined output</li>
+                            <li>Large files may take longer to process - please be patient</li>
+                            <li>If you encounter issues, try splitting very large files into smaller ones</li>
+                            <li>Always verify the combined data matches your expectations before use</li>
+                            <li>Keep a backup of your original files before processing</li>
+                            <li>Supported browsers: Chrome 80+, Firefox 75+, Safari 14+, Edge 80+</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="info-panel faq-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                </div>
+                <div class="tab-content">
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle" style="color: var(--accent-blue); margin-right: 0.5rem;"></i> 1. What types of Excel files can I merge using this tool?</h3>
+                            <p>You can merge any Excel files such as attendance sheets, salary sheets, registers, bank statements, MIS reports, or custom internal reports. The tool is designed to handle different formats, column orders, and structures, not just identical templates.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle" style="color: var(--accent-blue); margin-right: 0.5rem;"></i> 2. Do all Excel files need to have the same columns or format?</h3>
+                            <p>No. Files do not need to follow the same format. The tool intelligently detects headers, aligns similar columns, and merges data logically. However, extremely unstructured files may require manual review after merging.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle" style="color: var(--accent-blue); margin-right: 0.5rem;"></i> 3. How does the tool handle different or multi-row headers?</h3>
+                            <p>The tool automatically scans the file to identify the actual data headers, even if there are title rows. Headers that span multiple rows are merged. Non-data rows like titles or notes are ignored or handled separately during the merge.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle" style="color: var(--accent-blue); margin-right: 0.5rem;"></i> 4. Will the original data in my Excel files be changed?</h3>
+                            <p>No. Your uploaded files are never modified. The tool only creates a new merged Excel file, keeping all original data intact.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle" style="color: var(--accent-blue); margin-right: 0.5rem;"></i> 5. What happens if some columns exist in one file but not in others?</h3>
+                            <p>The tool creates a combined structure that includes all detected columns. If a column is missing in a particular file, the corresponding cells in the merged output will remain blank for those rows.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle" style="color: var(--accent-blue); margin-right: 0.5rem;"></i> 6. Is this tool suitable for large or professional datasets?</h3>
+                            <p>Yes. The tool is built for real-world business data, including multi-sheet files, varying formats, and large datasets. Still, users should always review the merged output before using it for reporting or compliance purposes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2023 Excel Workbook Combiner • Version 2.0 • Professional Edition
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Download Modal -->
+    <div class="modal-overlay" id="reportModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-file-download"></i> Download Combined Workbook</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-label">Workbooks Selected</div>
+                        <div class="summary-value" id="modalFileCount">0</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Sheets Combined</div>
+                        <div class="summary-value" id="modalSheetCount">0</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Rows</div>
+                        <div class="summary-value" id="modalRowCount">0</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Max Columns</div>
+                        <div class="summary-value" id="modalColumnCount">0</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Processing Time</div>
+                        <div class="summary-value" id="modalTime">0s</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">File Size</div>
+                        <div class="summary-value" id="modalFileSize">0 KB</div>
+                    </div>
+                </div>
+
+                <div class="disclaimer-box">
+                    <h4><i class="fas fa-shield-alt"></i> Data Safety & Disclaimer</h4>
+                    <p>This combined workbook was generated entirely within your browser. No data was transmitted to external servers. Please verify the combined data before using it for critical financial reporting or audits. The tool developer is not responsible for any discrepancies in the combined output.</p>
+                </div>
+
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+                    <button class="btn btn-success" id="confirmDownload">
+                        <i class="fas fa-download"></i> Download Combined Workbook
+                    </button>
+                    <button class="btn btn-secondary" id="closeModalBtn">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
