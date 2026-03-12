@@ -18,7 +18,13 @@
     --star-empty: #e0e0e0;
 }
 
-.bacckground-back-vl{background: linear-gradient(135deg, #2a5298 0%, #004698 100%) !important;}
+ .btn-secondary:hover{color: var(--accent-blue) !important;}
+
+.bacckground-back-vl{background: linear-gradient(135deg, #2a5298 0%, #004698 100%) !important; 
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px), linear-gradient(135deg, #2a5298 0%, #02499d 100%) !important;
+    background-size: 30px 30px, 100% 100% !important;
+    background-size: 30px 30px, 100% 100% !important;
+    background-position: 0 0, 0 0 !important;}
 * {
     margin: 0;
     padding: 0;
@@ -180,7 +186,11 @@ body {
 }
 
 .upload-button {
-    background: var(--accent-blue);
+    background: linear-gradient(135deg, #2a5298 0%, #004698 100%) !important; 
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px), linear-gradient(135deg, #2a5298 0%, #02499d 100%) !important;
+    background-size: 30px 30px, 100% 100% !important;
+    background-size: 30px 30px, 100% 100% !important;
+    background-position: 0 0, 0 0 !important;
     color: white;
     border: none;
     padding: 1rem 2.5rem;
