@@ -166,7 +166,7 @@ function handleFiles(files) {
     // Reset summary table
     summaryBody.innerHTML = `
         <tr>
-            <td colspan="6" style="text-align: center; padding: 3rem; color: var(--text-light);">
+            <td colspan="6" style="text-align: center; padding: 3rem; color: var(--accent-blue);">
                 <i class="fas fa-file-excel" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
                 <h3 style="margin-bottom: 0.5rem; color: var(--primary-blue);">No Data Processed</h3>
                 <p>Upload Excel workbooks and click "Process Workbooks" to see the summary</p>
@@ -544,7 +544,7 @@ function resetTool() {
 
     previewBody.innerHTML = `
         <tr>
-            <td colspan="100" style="text-align: center; padding: 4rem; color: var(--text-light);">
+            <td colspan="100" style="text-align: center; padding: 4rem; color: var(--accent-blue);">
                 <i class="fas fa-file-excel" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
                 <h3 style="margin-bottom: 0.5rem; color: var(--primary-blue);">No Data to Display</h3>
                 <p>Upload Excel workbooks and click "Process Workbooks" to see the preview here</p>
@@ -556,7 +556,7 @@ function resetTool() {
 
     summaryBody.innerHTML = `
         <tr>
-            <td colspan="6" style="text-align: center; padding: 3rem; color: var(--text-light);">
+            <td colspan="6" style="text-align: center; padding: 3rem; color: var(--accent-blue);">
                 <i class="fas fa-file-excel" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
                 <h3 style="margin-bottom: 0.5rem; color: var(--primary-blue);">No Data Processed</h3>
                 <p>Upload Excel workbooks and click "Process Workbooks" to see the summary</p>
