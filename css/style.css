@@ -228,7 +228,7 @@ body {
 
 .summary-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 0px;
     padding: 1.8rem;
     box-shadow: 0 4px 12px var(--shadow-light);
     display: flex;
@@ -349,7 +349,7 @@ body {
 /* Summary Report Table */
 .summary-report {
     background: white;
-    border-radius: 12px;
+    border-radius: 0px;
     box-shadow: 0 4px 16px var(--shadow-light);
     overflow: hidden;
 }
@@ -449,7 +449,7 @@ body {
 /* Preview Section */
 .preview-section {
     background: white;
-    border-radius: 12px;
+    border-radius: 0;
     box-shadow: 0 4px 16px var(--shadow-light);
     overflow: hidden;
     display: flex;
@@ -578,7 +578,7 @@ body {
 .faq-section .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+       gap: .5667rem;
 }
 
 .faq-item h3 {
@@ -598,7 +598,7 @@ body {
 /* Info Panel */
 .info-panel {
     background: white;
-    border-radius: 12px;
+    border-radius: 0;
     box-shadow: 0 4px 16px var(--shadow-light);
     overflow: hidden;
 }
