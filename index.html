@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .container{max-width: 1650px;}
-    </style>
+   <style>
+    .container{max-width: 1500px;}
+   </style>
 </head>
 <body>
     <div class="app-container">
         <!-- Header -->
-    <header class="position-sticky top-0" style="z-index: 9999;">
+   <div class="container">
+     <header class="position-sticky top-0" style="z-index: 9999;">
             <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
@@ -32,19 +33,19 @@
                         <a class="nav-link" href="https://www.relievv.in/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tools">All Tools</a>
+                        <a class="nav-link" href="https://relievv.in/#tools">All Tools</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#categories">Categories</a>
+                        <a class="nav-link" href="https://relievv.in/#categories">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="https://relievv.in/#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog">Blog</a>
+                        <a class="nav-link" href="https://relievv.in/blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact">Contact</a>
+                        <a class="nav-link" href="https://relievv.in/contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -59,7 +60,7 @@
                     </div>
                     <div class="logo-text">
                         <h1>Excel Workbook Integrator</h1>
-                        <p>Unify multiple Excel workbooks into a single consolidated file for streamlined reporting and reconciliation workflows.</p>
+                        <p class="mb-0">Unify multiple Excel workbooks into a single consolidated file for streamlined reporting and reconciliation workflows.</p>
                     </div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 1.5rem;">
@@ -72,7 +73,7 @@
     </header>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="main-content p-0">
             <!-- File Upload Section -->
             <section class="upload-section">
                 <div class="section-header">
@@ -176,7 +177,7 @@
                         </thead>
                         <tbody id="summaryBody">
                             <tr>
-                                <td colspan="6" style="text-align: center; padding: 3rem; color: var(--text-light);">
+                                <td colspan="6" style="text-align: center; padding: 3rem; color: var(--accent-blue);">
                                     <i class="fas fa-file-excel" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
                                     <h3 style="margin-bottom: 0.5rem; color: var(--primary-blue);">No Data Processed</h3>
                                     <p>Upload Excel workbooks and click "Process Workbooks" to see the summary</p>
@@ -221,7 +222,7 @@
                             </thead>
                             <tbody id="previewBody">
                                 <tr>
-                                    <td colspan="100" style="text-align: center; padding: 4rem; color: var(--text-light);">
+                                    <td colspan="100" style="text-align: center; padding: 4rem; color: var(--accent-color);">
                                         <i class="fas fa-file-excel" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
                                         <h3 style="margin-bottom: 0.5rem; color: var(--primary-blue);">No Data to Display</h3>
                                         <p>Upload Excel workbooks and click "Process Workbooks" to see the preview here</p>
@@ -242,7 +243,7 @@
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane active" id="features-tab">
-                        <ul class="info-list">
+                        <ul class="info-list ps-0">
                             <li>Combine multiple Excel workbooks into a single workbook with all sheets preserved</li>
                             <li>Edit sheet names before downloading the combined workbook</li>
                             <li>Smart structural detection to identify data tables accurately</li>
@@ -254,7 +255,7 @@
                         </ul>
                     </div>
                     <div class="tab-pane" id="safety-tab">
-                        <ul class="info-list">
+                        <ul class="info-list ps-0">
                             <li>All processing is performed entirely within your browser using client-side logic</li>
                             <li>No Excel files, headers, sheet names, or data values are uploaded or stored</li>
                             <li>The tool does not communicate with any external server or third-party service</li>
@@ -269,7 +270,7 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="notes-tab">
-                        <ul class="info-list">
+                        <ul class="info-list ps-0">
                             <li>For best results, ensure your Excel workbooks have consistent sheet structures</li>
                             <li>The tool can handle up to 100MB of Excel data (depending on your browser's memory)</li>
                             <li>Complex formatting and formulas are preserved in the combined output</li>
@@ -333,6 +334,7 @@
                 </div>
             </div>
         </footer>
+   </div>
     </div>
 
     <!-- Download Modal -->
