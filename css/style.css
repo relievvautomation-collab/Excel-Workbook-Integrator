@@ -422,6 +422,7 @@ body {
 .summary-report-table tr:hover td {
     background: #f8fbff;
 }
+tfoot tr:hover td{background-color: var(--accent-blue) !important;}
 
 .summary-report-table tfoot td {
     background: var(--primary-blue);
@@ -686,7 +687,7 @@ body {
 }
 
 /* Modal */
-.modal-overlay {
+.modal-overlays {
     position: fixed;
     top: 0;
     left: 0;
@@ -700,9 +701,9 @@ body {
     padding: 1rem;
 }
 
-.modal {
-    background: white;
-    border-radius: 12px;
+.modals {
+    background: white !important;
+    border-radius: 0;
     width: 100%;
     max-width: 700px;
     max-height: 90vh;
@@ -722,17 +723,17 @@ body {
     }
 }
 
-.modal-header {
+.modal-headers {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     color: white;
     padding: 1.8rem;
-    border-radius: 12px 12px 0 0;
+    border-radius: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.modal-header h2 {
+.modal-headers h2 {
     font-size: 1.5rem;
     display: flex;
     align-items: center;
@@ -745,7 +746,7 @@ body {
     color: white;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius:  100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -757,7 +758,7 @@ body {
     background: rgba(255, 255, 255, 0.3);
 }
 
-.modal-body {
+.modal-bodys {
     padding: 2rem;
 }
 
